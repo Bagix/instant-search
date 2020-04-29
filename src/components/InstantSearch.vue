@@ -1,7 +1,7 @@
 <template>
   <div class='container'>
-    <p>Search by title</p>
-    <input class="search-input" type="text" v-model="searchText">
+    <label for="search">Search by title</label>
+    <input id="search" class="search-input" type="text" v-model="searchText">
     <ul class="list">
       <li class="list__item"
       target="_blank"
@@ -13,9 +13,11 @@
         </a>
       </li>
     </ul>
-    <h3 class="msg-empty" v-if="empty">No matching results for: <span>{{ searchText }}</span></h3>
+    <transition name="slideIn">
+      <h3 class="msg-empty" v-if="empty">No matching results for: <span>{{ searchText }}</span></h3>
+    </transition>
   </div>
-</template>
+</template>zdsc
 
 <script>
 export default {
@@ -127,6 +129,18 @@ body {
   background-color: var(--blue);
   border-radius: 3px;
   &__item {
+    &:first-of-type {
+      a {
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+      }
+    }
+    &:last-of-type {
+      a {
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+      }
+    }
     & > a {
       display: block;
       padding: 1rem 0;
@@ -149,6 +163,16 @@ body {
   color: var(--gray);
   span {
     text-decoration: underline;
+  }
+}
+
+.slideIn {
+  &-enter {
+    margin-top: 50px;
+    opacity: 0;
+  }
+  &-enter-active {
+    transition: all .5s linear;
   }
 }
 
