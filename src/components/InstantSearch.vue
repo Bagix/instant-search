@@ -65,7 +65,11 @@ export default {
       let articlesArray = this.articles
       const phrase = this.searchText
 
+<<<<<<< HEAD
       if(phrase === '') return articlesArray
+=======
+      if(this.phrase === '') return articlesArray
+>>>>>>> 931413a4453776ea1fc584ee37f229609c5700d7
 
       articlesArray = articlesArray.filter(el => el.title.toLowerCase().indexOf(phrase) !== -1)
       return articlesArray
